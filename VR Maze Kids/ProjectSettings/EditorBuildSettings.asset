@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Activities/AddSub_Activity.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Scene2.unity
-    guid: a2cdd323e3b37b74ca9627072b53a27f
+    path: Assets/Scenes/Activities/LearningN_Activity.unity
+    guid: 8257caca1160c2841a4ea4ce59baf03c
   m_configObjects: {}
