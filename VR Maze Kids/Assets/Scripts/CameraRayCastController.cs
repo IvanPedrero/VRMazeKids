@@ -5,6 +5,7 @@ using System.Collections;
 
 public class CameraRayCastController : MonoBehaviour
 {
+    public static int score, wrongAnswer;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,20 +28,28 @@ public class CameraRayCastController : MonoBehaviour
                 if (objectHit.gameObject.tag == "goodAns")
                 {
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+
+                    if (wrongAnswer != 0)
+                    {
+                        wrongAnswer = 0;
+                    }
+                    score++;
+
                     StartCoroutine(reloadScreen());
-                    /*obj1.SetActive(false);
-                    obj2.SetActive(true);
-                    obj3.SetActive(false);
-                    obj4.SetActive(true);
-                    obj5.SetActive(false);
-                    obj6.SetActive(true);*/
                 }
-                else if(objectHit.gameObject.tag == "1" || objectHit.gameObject.tag == "2" || objectHit.gameObject.tag == "3")
+                else if (objectHit.gameObject.tag == "wrongAns")
                 {
                     // Change to red color.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
+                    if (score != 0)
+                    {
+                        score = 0;
+                    }
+                    wrongAnswer++;
+
                     StartCoroutine(reloadScreen());
-                
+             
                 }
 
             }

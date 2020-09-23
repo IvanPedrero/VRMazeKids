@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ShowAnswers : MonoBehaviour
 {
-    public TextMesh texto_0, texto_1, texto_2, texto_3, texto_4, texto_5;
+    public TextMesh texto_1, texto_2, texto_3;
     public GameObject obj1, obj2, obj3;
     public int numero;
     Conversion con = new Conversion();
@@ -18,9 +18,9 @@ public class ShowAnswers : MonoBehaviour
         /*texto_1.text = con.enletras((UnityEngine.Random.Range(0, 20)).ToString());
         texto_2.text = con.enletras((UnityEngine.Random.Range(0, 20)).ToString());
         texto_3.text = con.enletras((UnityEngine.Random.Range(0, 20)).ToString());*/
-        obj1.tag = "1";
-        obj2.tag = "2";
-        obj3.tag = "3";
+        obj1.tag = "wrongAns";
+        obj2.tag = "wrongAns";
+        obj3.tag = "wrongAns";
         respuestaCorrecta = UnityEngine.Random.Range(1, 4);
 
         if (respuestaCorrecta == 1)
