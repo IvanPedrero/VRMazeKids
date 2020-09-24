@@ -13,7 +13,7 @@ public class ThrowBall : MonoBehaviour
 
     public bool hasTouchGround, hasBeenThrown;
 
-    public GameObject obj1, obj2, obj3;
+    //public GameObject obj1, obj2, obj3;
 
 
     float timeInterval;
