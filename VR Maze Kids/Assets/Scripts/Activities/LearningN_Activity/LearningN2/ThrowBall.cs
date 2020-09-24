@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThrowBall : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class ThrowBall : MonoBehaviour
     public Rigidbody ballRigidBody;
 
     public bool hasTouchGround, hasBeenThrown;
+
+    public GameObject obj1, obj2, obj3;
+
 
     float timeInterval;
 
@@ -25,7 +29,16 @@ public class ThrowBall : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButtonDown(0) && !hasBeenThrown){
-            ThrowRigidbodyBall();
+            RaycastHit hit;
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            if (Physics.Raycast(ray, out hit))
+            {
+                Transform objectHit = hit.transform;
+                if (objectHit.gameObject.tag == "goodAns")
+                {
+                    ThrowRigidbodyBall();
+                }
+            }
         }
     }
 
@@ -41,13 +54,14 @@ public class ThrowBall : MonoBehaviour
 
     void ReturnBall()
     {
-        ballRigidBody.isKinematic = true;
+        SceneManager.LoadScene(2);
+        /*ballRigidBody.isKinematic = true;
         transform.localPosition = new Vector3(-0.386f, 0.502f, 0.001f);
         transform.localRotation = Quaternion.identity;
         ballRigidBody.velocity = Vector3.zero;
 
         hasBeenThrown = false;
-        hasTouchGround = false;
+        hasTouchGround = false;*/
 
     }
 

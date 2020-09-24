@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Activities/LerningNumbers/LearningN1.unity
     guid: 8257caca1160c2841a4ea4ce59baf03c
+  - enabled: 1
+    path: Assets/Scenes/Activities/LerningNumbers/LearningN2.unity
+    guid: ca30f069213e75c4f9d4c015f8c1065f
   m_configObjects: {}
