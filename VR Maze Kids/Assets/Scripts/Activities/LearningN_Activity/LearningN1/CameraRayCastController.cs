@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CameraRayCastController : MonoBehaviour
 {
@@ -23,8 +24,16 @@ public class CameraRayCastController : MonoBehaviour
             // Hit something...
             if (Physics.Raycast(ray, out hit))
             {
-
                 Transform objectHit = hit.transform;
+                print(objectHit.name);
+                // Check if object layer is UI.
+                if(objectHit.gameObject.layer == LayerMask.NameToLayer("Buttons"))
+                {
+                    ButtonClickEvent b = objectHit.gameObject.GetComponent<ButtonClickEvent>();
+                    b.RunControllerFunction();
+                }
+
+
                 if (objectHit.gameObject.tag == "goodAns")
                 {
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
