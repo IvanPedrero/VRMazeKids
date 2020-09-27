@@ -5,21 +5,36 @@ using UnityEngine;
 
 public class ButtonClickEvent : MonoBehaviour
 {
+
+    public enum BUTTON_TYPE
+    {
+        panel_changer,
+        scene_changer,
+        activity_changer
+    }public BUTTON_TYPE type = BUTTON_TYPE.scene_changer;
+
     public string functionName;
     public int sceneIndex = -1;
+    public MainMenuController.ACTIVITIES activityType;
+
+
 
     private MainMenuController mainMenuController;
 
     private void Start()
     {
-        mainMenuController = GameObject.FindObjectOfType<MainMenuController>() ;
+        mainMenuController = FindObjectOfType<MainMenuController>() ;
     }
     public void RunControllerFunction()
     {
-        if(sceneIndex != -1)
+        if(type == BUTTON_TYPE.scene_changer)
             mainMenuController.SendMessage(functionName, sceneIndex);
-        else
+
+        else if(type == BUTTON_TYPE.panel_changer)
             mainMenuController.SendMessage(functionName);
+
+        else if (type == BUTTON_TYPE.activity_changer)
+            mainMenuController.SendMessage(functionName, activityType);
     }
 
 }
