@@ -15,6 +15,7 @@ TagManager:
   - 5
   - 6
   - wrongAns
+  - "Ni\xF1o"
   layers:
   - Default
   - TransparentFX
