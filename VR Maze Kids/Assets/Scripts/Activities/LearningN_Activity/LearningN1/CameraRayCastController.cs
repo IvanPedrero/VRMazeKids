@@ -5,7 +5,8 @@ using System.Collections;
 
 public class CameraRayCastController : MonoBehaviour
 {
-    public static int score, wrongAnswer;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,43 +24,27 @@ public class CameraRayCastController : MonoBehaviour
             // Hit something...
             if (Physics.Raycast(ray, out hit))
             {
-
                 Transform objectHit = hit.transform;
                 if (objectHit.gameObject.tag == "goodAns")
                 {
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+                    LearningNumbersN1 g = FindObjectOfType<LearningNumbersN1>();
+                    g.SendMessage("correctAnswers"); 
 
-                    if (wrongAnswer != 0)
-                    {
-                        wrongAnswer = 0;
-                    }
-                    score++;
 
-                    StartCoroutine(reloadScreen());
                 }
                 else if (objectHit.gameObject.tag == "wrongAns")
                 {
                     // Change to red color.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                    LearningNumbersN1 g = FindObjectOfType<LearningNumbersN1>();
+                    g.SendMessage("wrongAnswers");
 
-                    if (score != 0)
-                    {
-                        score = 0;
-                    }
-                    wrongAnswer++;
 
-                    StartCoroutine(reloadScreen());
-             
                 }
 
             }
         }
-    }
-
-    public IEnumerator reloadScreen()
-    {
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(1);
     }
 
 }

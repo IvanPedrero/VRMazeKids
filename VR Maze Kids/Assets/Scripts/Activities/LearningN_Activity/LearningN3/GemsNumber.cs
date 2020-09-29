@@ -44,7 +44,7 @@ public class GemsNumber : MonoBehaviour
         numOrd[1] = UnityEngine.Random.Range(100, 501);
         numOrd[2] = UnityEngine.Random.Range(100, 501);
   
-
+        
         Array.Sort(numOrd);
 
         if(texto_1.tag == "1")
@@ -104,9 +104,9 @@ public class GemsNumber : MonoBehaviour
             }
         }
         
-        cof1.tag = "1";
-        cof2.tag = "2";
-        cof3.tag = "3";
+        cof1.GetComponentInChildren<TextMesh>().text = numOrd[0].ToString();
+        cof2.GetComponentInChildren<TextMesh>().text = numOrd[1].ToString();
+        cof3.GetComponentInChildren<TextMesh>().text = numOrd[2].ToString();
 
 
 
