@@ -16,6 +16,8 @@ TagManager:
   - 6
   - wrongAns
   - "Ni\xF1o"
+  - PauseOverlay
+
   layers:
   - Default
   - TransparentFX
@@ -25,8 +27,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Buttons
+  - NavigationButtons
   - 
   - 
   - 

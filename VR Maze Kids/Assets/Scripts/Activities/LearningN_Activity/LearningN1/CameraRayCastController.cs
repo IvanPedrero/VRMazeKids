@@ -2,11 +2,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CameraRayCastController : MonoBehaviour
 {
+    public Transform navigatorPosition;
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +25,28 @@ public class CameraRayCastController : MonoBehaviour
             // Hit something...
             if (Physics.Raycast(ray, out hit))
             {
+
                 Transform objectHit = hit.transform;
+
+                // Check if object layer is UI.
+                if(objectHit.gameObject.layer == LayerMask.NameToLayer("Buttons"))
+                {
+                    ButtonClickEvent b = objectHit.gameObject.GetComponent<ButtonClickEvent>();
+                    b.RunControllerFunction();
+                }
+
+                // Navigation WITH MESSAGING.
+                else if (objectHit.gameObject.layer == LayerMask.NameToLayer("NavigationButtons"))
+                {
+                    NavigationButtonClickEvent b = objectHit.gameObject.GetComponent<NavigationButtonClickEvent>();
+                    b.DoAction();
+                    return;
+                }
+
+
                 if (objectHit.gameObject.tag == "goodAns")
                 {
+                    // Enviar mensaje al controlador.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
                     LearningNumbersN1 g = FindObjectOfType<LearningNumbersN1>();
                     g.SendMessage("correctAnswers"); 

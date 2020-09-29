@@ -43,6 +43,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        private Vector3 initialPosition = Vector3.zero;
+
         // Use this for initialization
         private void Start()
         {
@@ -56,6 +58,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+            initialPosition = this.transform.position;
         }
 
 
@@ -82,6 +86,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            if(Vector3.Distance(this.transform.position, initialPosition) > 0.01f) {
+                this.transform.position = initialPosition;
+            }
         }
 
 

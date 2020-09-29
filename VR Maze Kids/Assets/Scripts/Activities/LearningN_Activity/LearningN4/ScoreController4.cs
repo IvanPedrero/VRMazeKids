@@ -12,6 +12,7 @@ public class ScoreController4 : MonoBehaviour
         Debug.Log("Score:" + CameraRayCastController4.score);
         Debug.Log("Wrong:" + CameraRayCastController4.wrongAnswer);
 
+
         if (CameraRayCastController4.score == 3)
         {
             textWin.SetActive(true);
