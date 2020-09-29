@@ -8,6 +8,8 @@ public class PauseController : MonoBehaviour
 
     public bool isPause = false;
 
+    public GameObject pauseOverlay;
+
     // Execute before start
     private void Awake()
     {
@@ -36,6 +38,8 @@ public class PauseController : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+
+        pauseOverlay.SetActive(isPause);
     }
 
 }

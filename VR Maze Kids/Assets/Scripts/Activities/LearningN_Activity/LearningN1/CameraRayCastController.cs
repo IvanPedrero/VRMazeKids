@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class CameraRayCastController : MonoBehaviour
 {
     public static int score, wrongAnswer;
+
+    public Transform navigatorPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,7 @@ public class CameraRayCastController : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Transform objectHit = hit.transform;
-                print(objectHit.name);
+
                 // Check if object layer is UI.
                 if(objectHit.gameObject.layer == LayerMask.NameToLayer("Buttons"))
                 {
@@ -33,9 +36,18 @@ public class CameraRayCastController : MonoBehaviour
                     b.RunControllerFunction();
                 }
 
+                // Navigation WITH MESSAGING.
+                else if (objectHit.gameObject.layer == LayerMask.NameToLayer("NavigationButtons"))
+                {
+                    NavigationButtonClickEvent b = objectHit.gameObject.GetComponent<NavigationButtonClickEvent>();
+                    b.DoAction();
+                    return;
+                }
+
 
                 if (objectHit.gameObject.tag == "goodAns")
                 {
+                    // Enviar mensaje al controlador.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
 
                     if (wrongAnswer != 0)

@@ -9,6 +9,9 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // NavigationController.instance.CreateMenu();
+
         Debug.Log("Score:" + CameraRayCastController.score);
         Debug.Log("Wrong:" + CameraRayCastController.wrongAnswer);
 
