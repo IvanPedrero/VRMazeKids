@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LearningNumbersN1 : MonoBehaviour
 {
@@ -139,6 +138,6 @@ public class LearningNumbersN1 : MonoBehaviour
     public IEnumerator reloadScreen(int scene)
     {
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(scene);
+        NavigationController.instance.GoToScene(scene);
     }
 }

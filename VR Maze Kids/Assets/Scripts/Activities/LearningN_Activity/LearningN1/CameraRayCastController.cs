@@ -19,6 +19,7 @@ public class CameraRayCastController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+
             RaycastHit hit;
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
@@ -46,6 +47,11 @@ public class CameraRayCastController : MonoBehaviour
                     return;
                 }
 
+                // Validate pause.
+                if (PauseController.instance.isPause)
+                {
+                    return;
+                }
 
                 if (objectHit.gameObject.tag == "goodAns")
                 {
