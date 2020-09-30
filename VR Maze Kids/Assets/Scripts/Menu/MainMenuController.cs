@@ -24,6 +24,7 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {
         ShowMainPanel();
+        NavigationController.instance.CreateMenu();
     }
 
     private void Update()

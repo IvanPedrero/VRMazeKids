@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class CameraRayCastController : MonoBehaviour
 {
-    public static int score, wrongAnswer;
+    public Transform navigatorPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,9 @@ public class CameraRayCastController : MonoBehaviour
             // Hit something...
             if (Physics.Raycast(ray, out hit))
             {
+
                 Transform objectHit = hit.transform;
-                print(objectHit.name);
+
                 // Check if object layer is UI.
                 if(objectHit.gameObject.layer == LayerMask.NameToLayer("Buttons"))
                 {
@@ -33,42 +35,36 @@ public class CameraRayCastController : MonoBehaviour
                     b.RunControllerFunction();
                 }
 
+                // Navigation WITH MESSAGING.
+                else if (objectHit.gameObject.layer == LayerMask.NameToLayer("NavigationButtons"))
+                {
+                    NavigationButtonClickEvent b = objectHit.gameObject.GetComponent<NavigationButtonClickEvent>();
+                    b.DoAction();
+                    return;
+                }
+
 
                 if (objectHit.gameObject.tag == "goodAns")
                 {
+                    // Enviar mensaje al controlador.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+                    LearningNumbersN1 g = FindObjectOfType<LearningNumbersN1>();
+                    g.SendMessage("correctAnswers"); 
 
-                    if (wrongAnswer != 0)
-                    {
-                        wrongAnswer = 0;
-                    }
-                    score++;
 
-                    StartCoroutine(reloadScreen());
                 }
                 else if (objectHit.gameObject.tag == "wrongAns")
                 {
                     // Change to red color.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                    LearningNumbersN1 g = FindObjectOfType<LearningNumbersN1>();
+                    g.SendMessage("wrongAnswers");
 
-                    if (score != 0)
-                    {
-                        score = 0;
-                    }
-                    wrongAnswer++;
 
-                    StartCoroutine(reloadScreen());
-             
                 }
 
             }
         }
-    }
-
-    public IEnumerator reloadScreen()
-    {
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(1);
     }
 
 }

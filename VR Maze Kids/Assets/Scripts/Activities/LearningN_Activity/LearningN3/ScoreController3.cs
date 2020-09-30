@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class ScoreController3 : MonoBehaviour
 {
     public GameObject textWin, textLose;
