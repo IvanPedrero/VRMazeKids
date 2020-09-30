@@ -10797,7 +10797,7 @@ MonoBehaviour:
   type: 2
   functionName: ShowActivityLevelPanel
   sceneIndex: 0
-  activityType: 1
+  activityType: 0
 --- !u!65 &1381265244
 BoxCollider:
   m_ObjectHideFlags: 0
