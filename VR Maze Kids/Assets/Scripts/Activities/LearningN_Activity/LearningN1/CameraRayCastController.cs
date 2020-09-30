@@ -19,12 +19,16 @@ public class CameraRayCastController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+
             RaycastHit hit;
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
             // Hit something...
             if (Physics.Raycast(ray, out hit))
             {
+
+                Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.green);
+
 
                 Transform objectHit = hit.transform;
 
@@ -43,6 +47,11 @@ public class CameraRayCastController : MonoBehaviour
                     return;
                 }
 
+                // Validate pause.
+                if (PauseController.instance.isPause)
+                {
+                    return;
+                }
 
                 if (objectHit.gameObject.tag == "goodAns")
                 {

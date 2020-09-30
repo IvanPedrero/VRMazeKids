@@ -7,7 +7,8 @@ public class CameraRayCastController3 : MonoBehaviour
 {
     private string value;
     private int res, res2, puntos, wrong;
-    public static int score, wrongAnswer;
+    public static int score, wrongAnswer, neg, neg2, i = 0;
+    public GameObject chest1, chest2, chest3;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,28 +34,61 @@ public class CameraRayCastController3 : MonoBehaviour
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
                     value = objectHit.gameObject.GetComponentInChildren<TextMesh>().text;
                     //objectHit.gameObject.name = "h";
-                    Debug.Log(value);
+                    //Debug.Log(value);
                 }
 
-                if(objectHit.gameObject.name == "Chest")
+                if (objectHit.gameObject.name == "Chest")
                 {
-                    res = int.Parse(value);
-                    res2 = int.Parse(objectHit.gameObject.GetComponentInChildren<TextMesh>().text);
-                    if (res == res2)
+                    //res = ivalue);
+                    //res2 = int.Parse(objectHit.gameObject.GetComponentInChildren<TextMesh>().text);
+                    objectHit.gameObject.GetComponentInChildren<TextMesh>().text = value;
+
+                }
+                if (objectHit.gameObject.name == "duck")
+                {
+                    GemsNumber.num[0] = int.Parse(chest1.GetComponentInChildren<TextMesh>().text);
+                    GemsNumber.num[1] = int.Parse(chest2.GetComponentInChildren<TextMesh>().text);
+                    GemsNumber.num[2] = int.Parse(chest3.GetComponentInChildren<TextMesh>().text);
+
+                    for (i = 0; i < 3; i++)
                     {
-                        puntos++;
-                        Debug.Log(puntos); 
+                        if (GemsNumber.num[i] != GemsNumber.numOrd[i])
+                        {
+
+                            neg++;
+                        }
+                        else
+                        {
+                            neg2++;
+                        }
+                        /*if(GemsNumber.num[2] != 0)
+                        {
+                            for(i = 0; i<3; i++)
+                            {
+                                GemsNumber.num[i] = 0;
+                            }
+                        }*/
                     }
+                    if (neg != 0)
+                    {
+                        SceneManager.LoadScene(3);
+                        score = 0;
+                        wrongAnswer++;
+                        neg = 0;
+                    }
+                    else if (neg2 == 3)
+                    {
+                        score++;
+                        wrongAnswer = 0;
+                        neg2 = 0;
+                        SceneManager.LoadScene(3);
+
+                    }
+
                 }
 
 
-                if(puntos == 3)
-                {
-                    Debug.Log("Good");
-                    SceneManager.LoadScene(3);
 
-                }
-                
 
                 /*if (objectHit.gameObject.tag == "1" && objectHit.gameObject.name == "gem")
                 {
@@ -107,12 +141,12 @@ public class CameraRayCastController3 : MonoBehaviour
 
             }
         }
-            }
+    }
 
-            public IEnumerator reloadScreen()
-            {
-                yield return new WaitForSeconds(2f);
-                SceneManager.LoadScene(3);
-            }
+    public IEnumerator reloadScreen()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(3);
+    }
 
-        } 
+}
