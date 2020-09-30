@@ -27,6 +27,8 @@ public class LearningNumbersN1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //NavigationController.instance.CreateMenu();
+
         //RandomSpawn Apples
         appleList = GameObject.FindGameObjectsWithTag("apple");
         if (appleList.Length == 0)
@@ -70,12 +72,16 @@ public class LearningNumbersN1 : MonoBehaviour
             textWin.SetActive(true);
             textLose.SetActive(false);
             Debug.Log("Ganaste");
+            score = 0;
+            StartCoroutine(reloadScreen(2));
         }
         else if (wrongAnswer == 3)
         {
             textWin.SetActive(false);
             textLose.SetActive(true);
             Debug.Log("Perdiste");
+            wrongAnswer = 0;
+            StartCoroutine(reloadScreen(1));
         }
     }
 
@@ -116,7 +122,7 @@ public class LearningNumbersN1 : MonoBehaviour
         }
         score++;
 
-        StartCoroutine(reloadScreen());
+        StartCoroutine(reloadScreen(1));
     }
 
     public void wrongAnswers()
@@ -127,12 +133,12 @@ public class LearningNumbersN1 : MonoBehaviour
         }
         wrongAnswer++;
 
-        StartCoroutine(reloadScreen());
+        StartCoroutine(reloadScreen(1));
     }
 
-    public IEnumerator reloadScreen()
+    public IEnumerator reloadScreen(int scene)
     {
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(scene);
     }
 }
