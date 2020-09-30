@@ -11,7 +11,8 @@ public class GemsNumber : MonoBehaviour
     Conversion con = new Conversion();
     public TextMesh texto_1, texto_2, texto_3;
     private string a, b, c, d, e, f;
-    private int [] numOrd = new int [3];
+    public static int[] numOrd = new int[3];
+    public static int[] num = new int[3];
     private TextMesh texto_;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class GemsNumber : MonoBehaviour
         b = UnityEngine.Random.Range(1, 4).ToString();
         c = UnityEngine.Random.Range(1, 4).ToString();
 
-        while(b == c || b == a || c == a)
+        while (b == c || b == a || c == a)
         {
             if (a == b || a == c)
             {
@@ -32,9 +33,9 @@ public class GemsNumber : MonoBehaviour
             }
         }
 
-        obj1.tag = a;
+        /*obj1.tag = a;
         obj2.tag = b;
-        obj3.tag = c;
+        obj3.tag = c;*/
 
         texto_1.tag = a;
         texto_2.tag = b;
@@ -43,15 +44,15 @@ public class GemsNumber : MonoBehaviour
         numOrd[0] = UnityEngine.Random.Range(100, 501);
         numOrd[1] = UnityEngine.Random.Range(100, 501);
         numOrd[2] = UnityEngine.Random.Range(100, 501);
-  
-        
+
+
         Array.Sort(numOrd);
 
-        if(texto_1.tag == "1")
+        if (texto_1.tag == "1")
         {
             texto_1.text = numOrd[0].ToString();
             //obj1.name = "gem1";
-            if(texto_2.tag == "2")
+            if (texto_2.tag == "2")
             {
                 texto_2.text = numOrd[1].ToString();
                 //obj2.name = "gem2";
@@ -65,7 +66,8 @@ public class GemsNumber : MonoBehaviour
                 texto_3.text = numOrd[1].ToString();
                 //obj3.name = "gem3";
             }
-        }else if(texto_2.tag == "1")
+        }
+        else if (texto_2.tag == "1")
         {
             texto_2.text = numOrd[0].ToString();
             //obj2.name = "gem2";
@@ -103,10 +105,10 @@ public class GemsNumber : MonoBehaviour
                 //obj2.name = "gem2";
             }
         }
-        
-        cof1.GetComponentInChildren<TextMesh>().text = numOrd[0].ToString();
+
+        /*cof1.GetComponentInChildren<TextMesh>().text = numOrd[0].ToString();
         cof2.GetComponentInChildren<TextMesh>().text = numOrd[1].ToString();
-        cof3.GetComponentInChildren<TextMesh>().text = numOrd[2].ToString();
+        cof3.GetComponentInChildren<TextMesh>().text = numOrd[2].ToString();*/
 
 
 
@@ -115,6 +117,6 @@ public class GemsNumber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

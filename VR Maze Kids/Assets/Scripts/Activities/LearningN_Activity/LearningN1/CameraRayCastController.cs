@@ -26,6 +26,9 @@ public class CameraRayCastController : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
 
+                Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.green);
+
+
                 Transform objectHit = hit.transform;
 
                 // Check if object layer is UI.

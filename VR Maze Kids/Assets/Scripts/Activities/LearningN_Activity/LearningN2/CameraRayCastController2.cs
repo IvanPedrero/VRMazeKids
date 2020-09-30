@@ -23,8 +23,25 @@ public class CameraRayCastController2 : MonoBehaviour
             // Hit something...
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.green);
 
                 Transform objectHit = hit.transform;
+
+                // Check if object layer is UI.
+                if (objectHit.gameObject.layer == LayerMask.NameToLayer("Buttons"))
+                {
+                    ButtonClickEvent b = objectHit.gameObject.GetComponent<ButtonClickEvent>();
+                    b.RunControllerFunction();
+                }
+
+                // Navigation WITH MESSAGING.
+                else if (objectHit.gameObject.layer == LayerMask.NameToLayer("NavigationButtons"))
+                {
+                    NavigationButtonClickEvent b = objectHit.gameObject.GetComponent<NavigationButtonClickEvent>();
+                    b.DoAction();
+                    return;
+                }
+
                 if (objectHit.gameObject.tag == "goodAns")
                 {
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
