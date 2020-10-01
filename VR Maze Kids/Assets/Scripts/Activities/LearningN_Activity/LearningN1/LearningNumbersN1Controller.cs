@@ -26,7 +26,7 @@ public class LearningNumbersN1Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //NavigationController.instance.CreateMenu();
+        NavigationController.instance.CreateMenu();
 
         //RandomSpawn Apples
         appleList = GameObject.FindGameObjectsWithTag("apple");
@@ -141,3 +141,4 @@ public class LearningNumbersN1Controller : MonoBehaviour
         NavigationController.instance.GoToScene(scene);
     }
 }
+
