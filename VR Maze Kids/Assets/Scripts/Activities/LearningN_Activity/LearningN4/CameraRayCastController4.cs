@@ -6,10 +6,7 @@ using System;
 
 public class CameraRayCastController4 : MonoBehaviour
 {
-    public static int score, wrongAnswer;
-    private string NCorrecto;
-    private int RCorrecta;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,37 +44,23 @@ public class CameraRayCastController4 : MonoBehaviour
                     return;
                 }
 
-                if (objectHit.gameObject.tag == "1" || objectHit.gameObject.tag == "2" || objectHit.gameObject.tag == "3" || objectHit.gameObject.tag == "4" || objectHit.gameObject.tag == "5")
+                // Validate pause.
+                if (PauseController.instance.isPause)
+                {
+                    return;
+                }
+
+                if ((objectHit.gameObject.tag == "1" || objectHit.gameObject.tag == "2" || objectHit.gameObject.tag == "3" || objectHit.gameObject.tag == "4" || objectHit.gameObject.tag == "5") && objectHit.gameObject.GetComponent<MeshRenderer>().material.color != Color.blue)
                 {
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
-
-                    NCorrecto = NCorrecto + objectHit.gameObject.GetComponentInChildren<TextMesh>().text;
-                    //Debug.Log(Ncorrecto);
+                    LearningNumbersN4Controller.NCorrecto = LearningNumbersN4Controller.NCorrecto + objectHit.gameObject.GetComponentInChildren<TextMesh>().text;
+                    Debug.Log(LearningNumbersN4Controller.NCorrecto);
                 }
 
                 if (objectHit.gameObject.tag == "Niño")
                 {
-                    RCorrecta = int.Parse(NCorrecto);
-                    if (RCorrecta == BalloonsNumbers.respuesta)
-                    {
-                        if (wrongAnswer != 0)
-                        {
-                            wrongAnswer = 0;
-                        }
-                        score++;
-                        Debug.Log(score);
-                        StartCoroutine(reloadScreen());
-                    }
-                    else
-                    {
-                        if (score != 0)
-                        {
-                            score = 0;
-                        }
-                        wrongAnswer++;
-                        Debug.Log(score);
-                        StartCoroutine(reloadScreen());
-                    }
+                    LearningNumbersN4Controller g = FindObjectOfType<LearningNumbersN4Controller>();
+                    g.SendMessage("fin");
                 }
             }
         }

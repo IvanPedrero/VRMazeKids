@@ -4,14 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BalloonsNumbers : MonoBehaviour
+public class LearningNumbersN4Controller : MonoBehaviour
 {
+    //Balloons Number
     Conversion con = new Conversion();
     public GameObject B_1, B_2, B_3, B_4, B_5;
     public GameObject[] B = new GameObject[5];
     public TextMesh dialogo;
     private string a, b, c, d, f;
     public static int respuesta;
+
+    //Score Controller
+    public GameObject textWin, textLose;
+
+    //RayCast
+    public static int score, wrongAnswer;
+    public static string NCorrecto;
+    private Int64 RCorrecta;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +31,7 @@ public class BalloonsNumbers : MonoBehaviour
         d = UnityEngine.Random.Range(4, 6).ToString();
         f = UnityEngine.Random.Range(4, 6).ToString();
 
-        while (b == c || b == a || c == a )
+        while (b == c || b == a || c == a)
         {
             if (a == b || a == c)
             {
@@ -44,7 +54,7 @@ public class BalloonsNumbers : MonoBehaviour
         B_4.tag = d;
         B_5.tag = f;
 
-        respuesta = UnityEngine.Random.Range(1,1000);
+        respuesta = UnityEngine.Random.Range(1, 1000);
         dialogo.text = con.enletras(respuesta.ToString());
 
         B[0] = B_1;
@@ -53,9 +63,9 @@ public class BalloonsNumbers : MonoBehaviour
         B[3] = B_4;
         B[4] = B_5;
 
-        for (int i=0; i<5; i++)
+        for (int i = 0; i < 5; i++)
         {
-            if(B[i].tag == "1")
+            if (B[i].tag == "1")
             {
                 B[i].GetComponentInChildren<TextMesh>().text = ((int)(respuesta / 100)).ToString();
             }
@@ -65,12 +75,12 @@ public class BalloonsNumbers : MonoBehaviour
                 B[i].GetComponentInChildren<TextMesh>().text = ((int)((respuesta % 100) / 10)).ToString();
             }
 
-            if(B[i].tag == "4")
+            if (B[i].tag == "4")
             {
                 B[i].GetComponentInChildren<TextMesh>().text = ((int)((respuesta % 100) % 10)).ToString();
             }
 
-            if(B[i].tag == "3")
+            if (B[i].tag == "3")
             {
                 B[i].GetComponentInChildren<TextMesh>().text = UnityEngine.Random.Range(0, 10).ToString();
             }
@@ -81,14 +91,69 @@ public class BalloonsNumbers : MonoBehaviour
             }
         }
 
+        //Score Controller
+        Debug.Log("Score:" + score);
+        Debug.Log("Wrong:" + wrongAnswer);
 
-
+        if (score == 3)
+        {
+            textWin.SetActive(true);
+            textLose.SetActive(false);
+            Debug.Log("Ganaste");
+            score = 0;
+            StartCoroutine(reloadScreen(0));
+        }
+        else if (wrongAnswer == 3)
+        {
+            textWin.SetActive(false);
+            textLose.SetActive(true);
+            Debug.Log("Perdiste");
+            wrongAnswer = 0;
+            StartCoroutine(reloadScreen(4));
+        }
     }
-
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void fin()
+    {
+        if(NCorrecto == null)
+        {
+            NCorrecto = "0";
+        }
+
+        RCorrecta = int.Parse(NCorrecto);
+        if (respuesta == RCorrecta)
+        {
+            if (wrongAnswer != 0)
+            {
+                wrongAnswer = 0;
+            }
+            score++;
+            //Debug.Log(score);
+            StartCoroutine(reloadScreen(4));
+        }
+        else
+        {
+            if (score != 0)
+            {
+                score = 0;
+            }
+            wrongAnswer++;
+            //Debug.Log(score);
+            StartCoroutine(reloadScreen(4));
+        }
+
+        NCorrecto = "0";
+    }
+
+    public IEnumerator reloadScreen(int scene)
+    {
+        yield return new WaitForSeconds(1f);
+        NavigationController.instance.GoToScene(scene);
     }
 }

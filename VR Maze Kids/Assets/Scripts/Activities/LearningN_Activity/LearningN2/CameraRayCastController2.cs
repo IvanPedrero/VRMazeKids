@@ -23,8 +23,6 @@ public class CameraRayCastController2 : MonoBehaviour
             // Hit something...
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.green);
-
                 Transform objectHit = hit.transform;
 
                 // Check if object layer is UI.
@@ -42,41 +40,28 @@ public class CameraRayCastController2 : MonoBehaviour
                     return;
                 }
 
+                // Validate pause.
+                if (PauseController.instance.isPause)
+                {
+                    return;
+                }
+
                 if (objectHit.gameObject.tag == "goodAns")
                 {
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+                    LearningNumbersN2Controller g = FindObjectOfType<LearningNumbersN2Controller>();
+                    g.SendMessage("correctAnswers");
 
-                    if (wrongAnswer != 0)
-                    {
-                        wrongAnswer = 0;
-                    }
-                    score++;
-                    Debug.Log(score);
-                    StartCoroutine(reloadScreen());
                 }
                 else if (objectHit.gameObject.tag == "wrongAns")
                 {
                     // Change to red color.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-
-                    if (score != 0)
-                    {
-                        score = 0;
-                    }
-                    wrongAnswer++;
-
-                    StartCoroutine(reloadScreen());
-
+                    LearningNumbersN2Controller g = FindObjectOfType<LearningNumbersN2Controller>();
+                    g.SendMessage("wrongAnswers");
                 }
 
             }
         }
     }
-
-    public IEnumerator reloadScreen()
-    {
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(2);
-    }
-
 }

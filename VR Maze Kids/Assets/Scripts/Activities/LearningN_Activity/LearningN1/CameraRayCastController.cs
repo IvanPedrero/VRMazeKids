@@ -27,9 +27,6 @@ public class CameraRayCastController : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
 
-                Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.green);
-
-
                 Transform objectHit = hit.transform;
 
                 // Check if object layer is UI.
@@ -57,7 +54,7 @@ public class CameraRayCastController : MonoBehaviour
                 {
                     // Enviar mensaje al controlador.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
-                    LearningNumbersN1 g = FindObjectOfType<LearningNumbersN1>();
+                    LearningNumbersN1Controller g = FindObjectOfType<LearningNumbersN1Controller>();
                     g.SendMessage("correctAnswers"); 
 
 
@@ -66,7 +63,7 @@ public class CameraRayCastController : MonoBehaviour
                 {
                     // Change to red color.
                     objectHit.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-                    LearningNumbersN1 g = FindObjectOfType<LearningNumbersN1>();
+                    LearningNumbersN1Controller g = FindObjectOfType<LearningNumbersN1Controller>();
                     g.SendMessage("wrongAnswers");
 
 

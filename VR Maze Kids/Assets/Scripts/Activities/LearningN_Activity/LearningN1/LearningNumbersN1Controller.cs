@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LearningNumbersN1 : MonoBehaviour
+public class LearningNumbersN1Controller : MonoBehaviour
 {
     //RandomSpawn Apples
     public GameObject apple;
@@ -137,7 +137,7 @@ public class LearningNumbersN1 : MonoBehaviour
 
     public IEnumerator reloadScreen(int scene)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         NavigationController.instance.GoToScene(scene);
     }
 }
