@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36282185, g: 0.5661335, b: 0.843715, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1285,18 +1285,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccc90f517962a64ea47ca8621a5385b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apple: {fileID: 0}
+  d: 0
+  apple: {fileID: 1105760525757012, guid: bfec01bc3e4d0444dbe595b4f55c6730, type: 3}
   appleList: []
   nApple: 0
-  texto_1: {fileID: 0}
-  texto_2: {fileID: 0}
-  texto_3: {fileID: 0}
-  obj1: {fileID: 0}
-  obj2: {fileID: 0}
-  obj3: {fileID: 0}
+  texto_1: {fileID: 165850245}
+  texto_2: {fileID: 1481616293}
+  texto_3: {fileID: 225169310}
+  obj1: {fileID: 484076980}
+  obj2: {fileID: 546970032}
+  obj3: {fileID: 182726785}
   numero: 0
-  textWin: {fileID: 0}
-  textLose: {fileID: 0}
+  textWin: {fileID: 52816993}
+  textLose: {fileID: 723041361}
 --- !u!4 &595878176
 Transform:
   m_ObjectHideFlags: 0
@@ -1701,7 +1702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &824736910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2587,49 +2588,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4923552376887830984, guid: d76ebe8be5e57b347aa45685f751d70b,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923552376887830984, guid: d76ebe8be5e57b347aa45685f751d70b,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923552376887830984, guid: d76ebe8be5e57b347aa45685f751d70b,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4999996
-      objectReference: {fileID: 0}
     - target: {fileID: 4923552375498309146, guid: d76ebe8be5e57b347aa45685f751d70b,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1430775157, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430775157, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.7593333
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430775157, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.34894338
+      value: -0.122676834
       objectReference: {fileID: 0}
     - target: {fileID: 1430775157, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9371438
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430775157, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -40.845
+      value: 0.99244666
       objectReference: {fileID: 0}
     - target: {fileID: 1430775157, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.11
+      value: 0.19333403
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430775157, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -14.093
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
@@ -2765,7 +2743,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544256989}
-  m_Text: "\xA1Bienvenid@\nPara poder obtener puntos, debes \nde contar las manzanas
+  m_Text: "\xA1Bienvenid@!\nPara poder obtener puntos, debes \nde contar las manzanas
     que hay \nen el \xE1rbol y despu\xE9s seleccionar \nel n\xFAmero correspondiente
     en\nlos bloques."
   m_OffsetZ: 0

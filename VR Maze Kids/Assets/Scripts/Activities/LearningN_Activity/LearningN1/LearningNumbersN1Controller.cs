@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LearningNumbersN1Controller : MonoBehaviour
 {
+    public int d;
     //RandomSpawn Apples
     public GameObject apple;
     public GameObject[] appleList;
