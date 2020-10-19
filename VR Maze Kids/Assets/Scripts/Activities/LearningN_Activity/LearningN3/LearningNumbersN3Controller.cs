@@ -24,6 +24,7 @@ public class LearningNumbersN3Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //Gems Number
         a = UnityEngine.Random.Range(1, 4).ToString();
         b = UnityEngine.Random.Range(1, 4).ToString();

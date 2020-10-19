@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.32724008, g: 0.281855, b: 0.4168346, a: 1}
+  m_IndirectSpecularColor: {r: 0.3628649, g: 0.28334, b: 0.42398152, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -331,6 +331,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPSController
       objectReference: {fileID: 0}
+    - target: {fileID: 4923552376887604712, guid: d76ebe8be5e57b347aa45685f751d70b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4923552376887830984, guid: d76ebe8be5e57b347aa45685f751d70b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -406,6 +411,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4923552376884401800, guid: d76ebe8be5e57b347aa45685f751d70b,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923552376884401800, guid: d76ebe8be5e57b347aa45685f751d70b,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
     - target: {fileID: 4923552375109682123, guid: d76ebe8be5e57b347aa45685f751d70b,
         type: 3}
       propertyPath: obj1
@@ -435,16 +450,6 @@ PrefabInstance:
         type: 3}
       propertyPath: obj3
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923552376884401800, guid: d76ebe8be5e57b347aa45685f751d70b,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923552376884401800, guid: d76ebe8be5e57b347aa45685f751d70b,
-        type: 3}
-      propertyPath: m_Mass
-      value: 0.0000001
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4923552375109682123, guid: d76ebe8be5e57b347aa45685f751d70b, type: 3}
