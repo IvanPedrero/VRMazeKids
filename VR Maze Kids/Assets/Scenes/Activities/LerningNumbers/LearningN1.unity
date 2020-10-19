@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36301485, g: 0.56622136, b: 0.8437058, a: 1}
+  m_IndirectSpecularColor: {r: 0.36282185, g: 0.5661335, b: 0.843715, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1285,6 +1285,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccc90f517962a64ea47ca8621a5385b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  apple: {fileID: 0}
+  appleList: []
+  nApple: 0
+  texto_1: {fileID: 0}
+  texto_2: {fileID: 0}
+  texto_3: {fileID: 0}
+  obj1: {fileID: 0}
+  obj2: {fileID: 0}
+  obj3: {fileID: 0}
+  numero: 0
+  textWin: {fileID: 0}
+  textLose: {fileID: 0}
 --- !u!4 &595878176
 Transform:
   m_ObjectHideFlags: 0
@@ -2822,7 +2834,7 @@ PrefabInstance:
     - target: {fileID: 1306332105339474892, guid: da92ee8d9921da544ae1e3a800a5cf58,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1094239817917388777, guid: da92ee8d9921da544ae1e3a800a5cf58,
         type: 3}
